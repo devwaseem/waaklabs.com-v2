@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import BrickellLogo from "../../assets/images/clients/Brickell.png";
+import ContentoLogo from "../../assets/images/clients/Contento.png";
+import AllospacesLogo from "../../assets/images/clients/Allospaces.png";
+import BridgeLogo from "../../assets/images/clients/Bridge.png";
+import LaagomLogo from "../../assets/images/clients/Laagom.png";
+import AdwiserLogo from "../../assets/images/clients/Adwiser.png";
+import ASCILogo from "../../assets/images/clients/ASCI.png";
+import ZeeshLogo from "../../assets/images/clients/Zeesh.png";
+import StashlyLogo from "../../assets/images/clients/Stashly.png";
+
+interface Clients {
+    logo: ImageMetadata;
+    alt: string;
+}
+const clients: Clients[] = [
+    {
+        logo: BrickellLogo,
+        alt: "Brickell.com",
+    },
+    {
+        logo: ContentoLogo,
+        alt: "Contento AI",
+    },
+    {
+        logo: AllospacesLogo,
+        alt: "Allospaces.com",
+    },
+
+    {
+        logo: BridgeLogo,
+        alt: "WeBridge App",
+    },
+
+    {
+        logo: LaagomLogo,
+        alt: "Laagom",
+    },
+    {
+        logo: AdwiserLogo,
+        alt: "Adwiser",
+    },
+    {
+        logo: ASCILogo,
+        alt: "ASCI",
+    },
+    {
+        logo: ZeeshLogo,
+        alt: "Zeesh",
+    },
+    {
+        logo: StashlyLogo,
+        alt: "Stashly",
+    },
+];
+---
+
+<section id="clients">
+    <div class="mt-24 p-8 lg:p-24">
+        <div class="mx-auto max-w-2xl text-center">
+            <div>
+                <p
+                    class="mx-auto mt-4 max-w-xl text-lg tracking-tight text-gray-600">
+                    Fostering Excellence in Businesses From Startups to
+                    Established Giants
+                </p>
+            </div>
+        </div>
+        <div
+            class="mx-auto mt-16 grid max-w-7xl grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 lg:grid-cols-5">
+            {
+                clients.map((client) => (
+                    <Image
+                        src={client.logo}
+                        alt={client.alt}
+                        width={300}
+                        height={200}
+                        loading="lazy"
+                    />
+                ))
+            }
+        </div>
+        <div class="mt-20 flex justify-center text-sm">
+            <a
+                href="#"
+                class="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-gray-600">
+                <span class="hidden md:inline-block"
+                    >Over 7 Years of Mastery, Experience Our Proven Expertise:
+                    &nbsp;</span
+                >
+                <span class="text-indigo-600">Read our Success Stories →</span
+                ></a
+            >
+        </div>
+    </div>
+</section>

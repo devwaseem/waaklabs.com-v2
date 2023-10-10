@@ -1,0 +1,63 @@
+---
+import ChatBubbleText from "./bubbles/text.astro";
+import ChatBubbleLink from "./bubbles/link.astro";
+import ChatBubbleProject from "./bubbles/project.astro";
+import ChatBubblePricing from "./bubbles/pricing.astro";
+import ChatBubbleContact from "./bubbles/contact.astro";
+import ChatBubbleSocialLink from "./bubbles/social.astro";
+import ChatBubbleCalendly from "./bubbles/calendly.astro";
+import { Image } from "astro:assets";
+import type { ChatSectionType } from "./types";
+
+interface Props {
+    section: ChatSectionType;
+}
+
+const { section }: Props = Astro.props;
+const { messages, author } = section;
+---
+
+<div
+    class={"flex flex-col gap-1" +
+        " " +
+        (author.side == "right" && "items-end")}>
+    {
+        messages.map((chatMessage) =>
+            chatMessage.type === "text" ? (
+                <ChatBubbleText side={author.side}>
+                    {chatMessage.text}
+                </ChatBubbleText>
+            ) : chatMessage.type === "text-html" ? (
+                <ChatBubbleText
+                    side={author.side}
+                    set:html={chatMessage.html}
+                />
+            ) : chatMessage.type === "link" && chatMessage.link ? (
+                <ChatBubbleLink {...chatMessage.link} />
+            ) : chatMessage.type === "project" && chatMessage.project ? (
+                <ChatBubbleProject {...chatMessage.project} />
+            ) : chatMessage.type === "pricing" ? (
+                <ChatBubblePricing />
+            ) : chatMessage.type === "real-chat" && chatMessage.text ? (
+                <ChatBubbleContact cta={chatMessage.text} />
+            ) : chatMessage.type === "calendly" ? (
+                <ChatBubbleCalendly />
+            ) : chatMessage.type === "social-link" && chatMessage.social ? (
+                <ChatBubbleSocialLink {...chatMessage.social} />
+            ) : null,
+        )
+    }
+    <div class="mt-2 flex flex-row items-center">
+        <Image
+            src={author.image}
+            alt={"Logo of " + author.name}
+            loading="lazy"
+            class="h-7 w-7 overflow-hidden rounded-full border border-gray-200 object-cover"
+        />
+        <div class="ml-2 text-sm text-gray-600">
+            <!-- <span>WAAKLABS</span> -->
+            <!-- <span>•</span> -->
+            <span>{author.name}</span>
+        </div>
+    </div>
+</div>

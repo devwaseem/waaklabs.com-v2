@@ -1,0 +1,87 @@
+---
+const heading = "Unlock the Infinite Potential of Custom Code Development";
+const subheading =
+    "Say Goodbye to No-Code Limitations: Elevate Your Project with Custom Code Development for Unparalleled Flexibility and Power!";
+const features = [
+    {
+        title: "Limited Customization",
+        description:
+            "No-code platforms often restrict your project's uniqueness. Embrace custom code to break free from generic designs and functionality.",
+    },
+    {
+        title: "Scaling Challenges",
+        description:
+            "As your project grows, no-code solutions can hit scalability limits. Custom code ensures seamless growth and adaptability.",
+    },
+    {
+        title: "Integration Complexity",
+        description:
+            "Integrating with other tools and services can be challenging with no-code. Custom code offers the flexibility to connect effortlessly with the tools your business needs.",
+    },
+];
+---
+
+<section class="relative">
+    <div class="">
+        <div>
+            <div class="mx-auto max-w-4xl text-center">
+                <div class="sm:flex sm:justify-center">
+                    <div
+                        class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                        <a href="#" class="font-semibold text-indigo-600">
+                            <span class="absolute inset-0" aria-hidden="true">
+                            </span>
+                            <span class="block lg:inline">
+                                🎉 Avail Limited Time Offer
+                                <span aria-hidden="true">&nbsp;→</span>
+                            </span>
+                        </a>
+                    </div>
+                </div><p
+                    class="mt-8 text-4xl font-extrabold tracking-tight text-black lg:text-5xl">
+                    {heading}
+                </p>
+
+                <p
+                    class="mx-auto mt-4 max-w-2xl text-base text-gray-500 lg:text-xl">
+                    {subheading}
+                </p>
+            </div>
+            <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+                <a
+                    class="inline-flex h-12 w-full items-center justify-center rounded-xl border px-6 py-3 text-center font-medium text-black text-black/80 duration-200 focus:outline-none focus-visible:outline-black lg:w-auto"
+                    href="#approach">Our Approach</a
+                >
+
+                <a
+                    class="inline-flex h-12 max-w-3xl items-center justify-center rounded-xl border-2 border-black bg-black px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+                    href="#"
+                    >Book a Free Discovery Call &nbsp; →
+                </a>
+            </div>
+            <div
+                class="mx-auto mt-24 max-w-5xl items-start space-y-6 text-center text-sm sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+                {
+                    features.map((value) => (
+                        <div class="text-gray-500">
+                            <strong class="text-gray-700">{value.title}</strong>
+                            ━ {value.description}{" "}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute inset-0 z-[-100] grid grid-cols-3 opacity-10">
+        <div></div>
+        <div class="bg-indigo-400 blur-3xl"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="bg-indigo-400 blur-3xl"></div>
+        <div></div>
+        <div class="bg-indigo-400 blur-3xl"></div>
+    </div>
+</section>

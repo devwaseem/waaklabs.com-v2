@@ -1,0 +1,57 @@
+---
+interface Props {
+    cta: string;
+}
+const { cta }: Props = Astro.props;
+---
+
+<div class="max-w-fit rounded-2xl border border-gray-200 p-6 text-sm">
+    <div>
+        {cta}
+    </div>
+    <div class="flex flex-row flex-wrap items-center gap-2">
+        <button
+            @click="openChatWidget()"
+            class="mt-4 flex flex-row items-center gap-2 rounded-2xl bg-black px-4 py-2 text-white">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"
+                ></path>
+                <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"
+                ></path>
+            </svg>
+            <span>Chat</span></button
+        >
+        <button
+            @click="openCalendlyPopup()"
+            class="mt-4 flex flex-row items-center gap-2 rounded-2xl bg-black px-4 py-2 text-white">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M17.011 9.385v5.128l3.989 3.487v-12z"></path>
+                <path
+                    d="M3.887 6h10.08c1.468 0 3.033 1.203 3.033 2.803v8.196a.991 .991 0 0 1 -.975 1h-10.373c-1.667 0 -2.652 -1.5 -2.652 -3l.01 -8a.882 .882 0 0 1 .208 -.71a.841 .841 0 0 1 .67 -.287z"
+                ></path>
+            </svg>
+            <span>Schedule a Quick Meeting</span></button
+        >
+    </div>
+</div>

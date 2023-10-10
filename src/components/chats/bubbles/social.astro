@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+import type { ChatBubbleSocialType } from "../types";
+import ChatBubbleText from "./text.astro";
+interface Props extends ChatBubbleSocialType {}
+const { icon, name, link }: Props = Astro.props;
+---
+
+<ChatBubbleText side="left">
+    <a href={link} class="flex flex-row items-center gap-2">
+        <Image src={icon} alt="" width="18" height="18" />
+        <div class="underline">{name}</div>
+    </a>
+</ChatBubbleText>

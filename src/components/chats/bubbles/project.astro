@@ -1,0 +1,63 @@
+---
+import type { ChatBubbleProjectType } from "../types";
+
+interface Props extends ChatBubbleProjectType {}
+const { name, description, link }: Props = Astro.props;
+---
+
+<div
+    x-data=`{
+        open: false,
+        project: '${name}',
+        toggle() {
+            this.open = !this.open;
+            this.$dispatch("project:open", { project:this.project });
+        },
+        closeIfOtherAccordionOpen(openedAccordion) {
+            console.log(this.project, openedAccordion)
+            if(openedAccordion && openedAccordion != this.project) {
+                this.open = false;
+            }
+        }
+    }`
+    class="w-2xl rounded-2xl border border-gray-200 text-left text-sm">
+    <div
+        @click="toggle()"
+        @project:open.window="closeIfOtherAccordionOpen($event.detail.project)"
+        class="flex cursor-pointer flex-row items-center justify-between px-4 py-2">
+        <div>{name}</div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="transition duration-300"
+            :class="open && 'rotate-180'"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M6 9l6 6l6 -6"></path>
+        </svg>
+    </div>
+    <div x-show="open" x-collapse>
+        <div class="px-4 py-4">
+            <div>
+                {description}
+            </div>
+
+            {
+                link && (
+                    <div class="mt-4">
+                        <span>Link: </span>
+                        <a href={link} class="text-indigo-600">
+                            {link}
+                        </a>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</div>

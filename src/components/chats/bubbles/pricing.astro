@@ -1,0 +1,71 @@
+<div class="flex flex-col gap-1">
+    <div
+        class="flex max-w-fit flex-col gap-2 rounded-2xl border border-gray-200 p-4 text-sm">
+        <div class="text-lg"><strong>Flexi-Build Plan</strong></div>
+        <div class="flex flex-row items-center gap-0.5">
+            <div class="inline-block text-sm text-gray-500 line-through">
+                1999$
+            </div>
+            <div class="ml-1">1499$ / Month</div>
+            <div
+                class="relative ml-2 rounded-lg bg-red-50 px-2 py-1 text-xs text-red-800">
+                <span
+                    class="absolute inset-0.5 animate-ping rounded-full bg-red-50"
+                ></span>
+                 1 Spot Left!
+            </div>
+        </div>
+        <div>
+            <p>
+                Perfect if you don't have a fixed requirement in mind or you
+                think you might need to test & play with the project.
+            </p>
+            <p class="mt-2">
+                Pay a fixed price per month and build whatever you need!
+            </p>
+        </div>
+        <button
+            @click="openChatWidget()"
+            class="mt-2 max-w-fit rounded-2xl bg-black px-4 py-2 text-white"
+            >Let's Start!</button
+        >
+    </div>
+    <div
+        class="flex max-w-fit flex-col gap-2 rounded-2xl border border-gray-200 p-4 text-sm">
+        <div class="text-lg"><strong>Milestone Master Plan</strong></div>
+        <div>
+            <p>
+                Perfect if you have a fixed scope. For a custom fee, we will
+                deliver your project in milestones.
+            </p>
+            <p class="mt-2">
+                Pay an advance of <span class="text-gray-600 line-through"
+                    >50%</span
+                > 30% upfront to get started. Pay the rest, on every milestone
+                finished and satisfied.
+            </p>
+        </div>
+        <button
+            @click="openChatWidget()"
+            class="mt-2 flex max-w-fit flex-row items-center gap-2 rounded-2xl bg-black px-4 py-2 text-white">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"
+                ></path>
+                <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"
+                ></path>
+            </svg>
+             Request Quote</button
+        >
+    </div>
+</div>

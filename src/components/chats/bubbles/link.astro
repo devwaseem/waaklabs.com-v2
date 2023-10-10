@@ -1,0 +1,35 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+export interface ChatMessageLinkType {
+    href: string;
+    name: string;
+    image?: ImageMetadata;
+}
+
+interface Props extends ChatMessageLinkType {}
+
+const { href, name, image }: Props = Astro.props;
+---
+
+<div
+    class="max-w-fit overflow-hidden rounded-2xl bg-gray-100 text-sm text-black">
+    <a href={href} target="_blank">
+        {
+            image && (
+                <div>
+                    <Image src={image} alt="" width={600} height={350} />
+                </div>
+            )
+        }
+        <div class="px-4 py-3">
+            <strong>
+                {name}
+            </strong>
+            <div class="text-xs text-gray-600">
+                {href}
+            </div>
+        </div>
+    </a>
+</div>

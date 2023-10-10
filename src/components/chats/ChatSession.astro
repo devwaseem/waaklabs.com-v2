@@ -1,0 +1,22 @@
+---
+import ChatSection from "./ChatSection.astro";
+import type { ChatSessionType } from "./types";
+
+interface Props {
+    value: ChatSessionType;
+}
+
+const { value }: Props = Astro.props;
+const { timeAgo, sections } = value;
+---
+
+<section class="flex flex-col gap-1">
+    {
+        timeAgo && (
+            <div class="my-4 text-center text-xs text-gray-600">{timeAgo}</div>
+        )
+    }
+    <div class="flex flex-col gap-10">
+        {sections.map((section) => <ChatSection section={section} />)}
+    </div>
+</section>

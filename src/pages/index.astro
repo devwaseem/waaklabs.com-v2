@@ -1,24 +1,336 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../page_sections/index/hero.astro";
-import Clients from "../page_sections/index/clients.astro";
-import Approach from "../page_sections/index/approach.astro";
+import Chat from "../components/chats/ChatSession.astro";
+import WLProfileImage from "../assets/images/wl-profile.png";
+// import WLProfileImage from "../assets/images/logo-black.svg";
+import YouImage from "../assets/images/placeholder.jpeg";
+import AndresImage from "../assets/images/projects/brickell/andres.webp";
+import BrickellHomePageImage from "../assets/images/projects/brickell/homepage.png";
+import AllospacesImage from "../assets/images/projects/allospaces/allo_large.jpg";
+import PranavImage from "../assets/images/projects/allospaces/pranav.jpeg";
+import TwitterIcon from "../assets/icons/brand-x.svg";
+import InstagramIcon from "../assets/icons/brand-instagram.svg";
+import LinkedInIcon from "../assets/icons/brand-linkedin.svg";
+
+import type {
+    ChatAuthorType,
+    ChatMessageType,
+    ChatSessionType,
+} from "../components/chats/types";
+import { chatProjects } from "../data/projects";
+
+const waaklabsAuthor: ChatAuthorType = {
+    image: WLProfileImage,
+    name: "Waseem / Founder, WAAK Labs",
+    side: "left",
+};
+
+const youAuthor: ChatAuthorType = {
+    image: YouImage,
+    name: "You",
+    side: "right",
+};
+
+const andresAuthor: ChatAuthorType = {
+    image: AndresImage,
+    name: "Andres Larin / Brickell.com",
+    side: "left",
+};
+
+const pranavAuthor: ChatAuthorType = {
+    image: PranavImage,
+    name: "Pranav Ashok / Co-Founder, Allospaces.com",
+    side: "left",
+};
+
+function generateTextMessages(messages: string[]): ChatMessageType[] {
+    return messages.map((message) => ({
+        type: "text",
+        text: message,
+    }));
+}
+
+const chatSessions: ChatSessionType[] = [
+    {
+        timeAgo: "Today, 7m Ago",
+        sections: [
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "Hi WAAK Labs!",
+                    "You were recommended by my friend for a project. You up?",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: generateTextMessages([
+                    "Hi There!",
+                    "Thanks for connecting!",
+                    "I'm Waseem. Founder of WAAK Labs, How can I help?",
+                ]),
+            },
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "I wanted to know a few things about you",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: [
+                    ...generateTextMessages([
+                        "Sure!",
+                        "Basically, We are a full-service web and mobile app development company",
+                        "Right now, We focus on helping founders to migrate from their no-code projects to code.",
+                        "And, We can pretty much build anything you want.",
+                        "MVP",
+                        "E-commerce",
+                        "CRM",
+                        "Business Dashboards",
+                        "ERP Apps",
+                        "Mobile Apps (iOS & Android)",
+                        "And if required, No-Code apps",
+                        "You name it, We do it!",
+                        "We also embrace AI revolution, We can build AI apps as well, Be it from a custom chatbot powered by ChatGPT to Image generators!",
+                        "We have been doing this for 7 Years, Completed over 50+ projects. So there's a lot of experience that we bring to the table to help you succeed!",
+                        'In short, You can call this as a "CTO as a Service"',
+                        "Oh Also, We build Apps & tools for ourselves.",
+                        "Here's one, Tempbox: Create instant disposable emails for Various usecases.",
+                    ]),
+                    {
+                        type: "link",
+                        link: {
+                            name: "Tempbox",
+                            href: "https://tempbox.waseem.works/",
+                        },
+                    },
+                ],
+            },
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "😮 Thats Impressive!",
+                    "See, my friend recommended because you guys communicated better and helped my friend all the way and acted like a stakeholder.",
+                    "I'm proficient in my domain, but I definitely need help navigating the software space",
+                    "So, Having a CTO with us can do wonders!",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: generateTextMessages([
+                    "Thanks! We're all about that A+ communication and being in it together. 😄👍",
+                ]),
+            },
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "Ok, can I see some of your projects that you have worked on?",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: [
+                    ...generateTextMessages([
+                        "Sure! We have worked on a lot of projects but I don't want to bore you with a long list, So here are some of our Top Projects:",
+                        "First, Brickell.com - Miami's Largest & Best Real Estate Website.",
+                    ]),
+                    {
+                        type: "link",
+                        link: {
+                            name: "Brickell.com",
+                            href: "https://brickell.com",
+                            image: BrickellHomePageImage,
+                        },
+                    },
+                    ...generateTextMessages([
+                        "Andres Larin, Founder - Brickell.com had a old website built with wordpress which was slow & bloated.",
+                        "He was tired of it because he couldn't improve SEO and the design was bad.",
+                        "We built the whole website from scratch using latest technologies",
+                        "Our North Star for this project was to improve SEO to bring in leads for his business and we were successful in doing that!",
+                        "Actually, Let's hear from Andres itself!",
+                    ]),
+                ],
+            },
+            {
+                author: andresAuthor,
+                messages: generateTextMessages([
+                    "Hey, Sure!",
+                    "I had an Old & badly designed website",
+                    "I was also tired of working with my past developers who don't build things they promised, and were bad at communicating! 🤦‍♂️",
+                    "Working with Waseem was a breath of fresh air. I couldn't be more happy! He built a fantastic website.",
+                    "Because of the beautiful modern design, I found people are engaging more now.",
+                    "Cherry on top, Brickell.com has the most powerful search page compared to my competitors!",
+                    // "Here, take a look at this video which I have talked more about:",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: [
+                    ...generateTextMessages([
+                        "Thanks Andres!",
+                        "Moving on to Second, Allospaces",
+                    ]),
+                    {
+                        type: "link",
+                        link: {
+                            name: "Allospaces",
+                            href: "https://allospaces.com",
+                            image: AllospacesImage,
+                        },
+                    },
+                    ...generateTextMessages([
+                        // "Contento uses GPT to help real estate agents create content for their blogs, listing descriptions, etc.",
+                        "Imagine an \"AirBnB for Virtual Offices\", based right in Singapore. That's what we cooked up, and it's been a game-changer in the world of flexible workspaces.",
+                        "Let's hear it from Pranav - Co-Founder of Allospaces",
+                    ]),
+                ],
+            },
+            {
+                author: pranavAuthor,
+                messages: generateTextMessages([
+                    "Hey!",
+                    "Waseem has a true passion for building.",
+                    "His ability to break down a complex problem and structure it out is fantastic and he was instrumental in building allo spaces for us!",
+                    "He is proactive and preempts risks and downsides of, minimising them through creative solutions.",
+                    "A must have for anyone building an MVP!",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: [
+                    ...generateTextMessages([
+                        "Thank you for your kind words Pranav!",
+                        "I don't want to take up your time anymore. If you want to explore more projects, you can look here:",
+                    ]),
+                    ...chatProjects,
+                ],
+            },
+        ],
+    },
+    {
+        timeAgo: "Today, 2m Ago",
+        sections: [
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "I'm Impressed!",
+                    "Your design looks simple and clean. Do you have a dedicated designer?",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: generateTextMessages([
+                    "If you don't have any specific design requirements, we will use generic modern & clean design.",
+                    "It saves a lot of time for most of the projects",
+                    "We can custom design your project if you need!",
+                ]),
+            },
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "Cool!",
+                    "How about your tech stack?",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: generateTextMessages([
+                    "Before we reveal our magic sauce, We'd like to establish something!",
+                    "We are contrarian when it comes to building things",
+                    "We don't follow what's the latest hype around, Instead we use battle tested technologies that worked for ages successfully.",
+                    "But also embracing the latest technologies which will help us move fast.",
+                    "Having said that",
+                    "For Web - we use Django, a python framework primarily. Combined with HTMX & AlpineJS",
+                    "It helps us build apps rapidly.",
+                ]),
+            },
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "Awesome",
+                    "Let's talk numbers?",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: [
+                    ...generateTextMessages([
+                        "Sure",
+                        "We have 2 types of Plans.",
+                    ]),
+                    {
+                        type: "pricing",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        timeAgo: "Today, now",
+        sections: [
+            {
+                author: youAuthor,
+                messages: generateTextMessages([
+                    "Thank you.",
+                    "I want to start right away, How can we connect?",
+                ]),
+            },
+            {
+                author: waaklabsAuthor,
+                messages: [
+                    ...generateTextMessages(["Thats great!"]),
+                    {
+                        type: "text-html",
+                        html: 'You can send us an email to <strong><a href="mailto:hello@waaklabs.com">hello@waaklabs.com</a></strong>',
+                    },
+                    {
+                        type: "real-chat",
+                        text: "Or You can get started right away by:",
+                    },
+                    // ...generateTextMessages([
+                    //     "If you would like to schedule a quick 1 on 1 meeting with me",
+                    // ]),
+                    // {
+                    //     type: "calendly",
+                    // },
+                    ...generateTextMessages([
+                        "Oh Also, You can also with connect with us from any of these platforms:",
+                    ]),
+                    {
+                        type: "social-link",
+                        social: {
+                            icon: LinkedInIcon,
+                            name: "/devwaseem",
+                            link: "https://www.linkedin.com/in/devwaseem/",
+                        },
+                    },
+                    {
+                        type: "social-link",
+                        social: {
+                            icon: TwitterIcon,
+                            name: "@iamwaseem99",
+                            link: "https://x.com/iamwaseem99",
+                        },
+                    },
+                    {
+                        type: "social-link",
+                        social: {
+                            icon: InstagramIcon,
+                            name: "/dvlp.er",
+                            link: "https://www.instagram.com/dvlp.er/",
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+];
 ---
 
-<Layout title="waaklabs">
-    <main
-        class="mx-auto w-full max-w-7xl items-center px-8 pb-12 pt-24 md:px-12 lg:px-24">
-        <Hero />
-        <Clients />
-        <Approach />
-        <!-- TODO: 
-        -> Projects
-        -> Testimonials
-        -> Our Services
-        -> Pricing
-        -> FAQ
-        -> Footer -->
+<Layout title="Convert No-Code Projects to Code | WAAK Labs">
+    <main class="mx-auto mt-12 flex max-w-xl flex-col gap-8">
+        {chatSessions.map((chatSection) => <Chat value={chatSection} />)}
     </main>
 </Layout>
 
-<style></style>
+<script></script>

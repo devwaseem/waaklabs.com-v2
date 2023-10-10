@@ -1,5 +1,6 @@
 ---
-import Navbar from "../components/navbar.astro";
+import ChatNavbar from "../components/ChatNavbar.astro";
+
 interface Props {
     title: string;
 }
@@ -17,10 +18,107 @@ const { title } = Astro.props;
         <meta name="theme-color" content="#FFFFFF" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.1/dist/cdn.min.js"
+        ></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.1/dist/cdn.min.js"
+        ></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"
+        ></script>
+        <link
+            href="https://assets.calendly.com/assets/external/widget.css"
+            rel="stylesheet"
+        />
     </head>
-    <body class="bg-white">
-        <Navbar />
+    <body
+        x-data=`{
+            openChatWidget() {
+                drift.api.openChat();
+            },
+            openCalendlyPopup() {
+                Calendly.initPopupWidget({url: 'https://calendly.com/waak/meeting-with-waseem?hide_landing_page_details=1&hide_gdpr_banner=1'});return false;
+            }
+        }`
+        class="bg-white p-6 lg:p-20">
+        <ChatNavbar />
         <slot />
     </body>
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        !(function () {
+            var t = (window.driftt = window.drift = window.driftt || []);
+            if (!t.init) {
+                if (t.invoked)
+                    return void (
+                        window.console &&
+                        console.error &&
+                        console.error("Drift snippet included twice.")
+                    );
+                (t.invoked = !0),
+                    (t.methods = [
+                        "identify",
+                        "config",
+                        "track",
+                        "reset",
+                        "debug",
+                        "show",
+                        "ping",
+                        "page",
+                        "hide",
+                        "off",
+                        "on",
+                    ]),
+                    (t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }),
+                    t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }),
+                    (t.load = function (t) {
+                        var e = 3e5,
+                            n = Math.ceil(new Date() / e) * e,
+                            o = document.createElement("script");
+                        (o.type = "text/javascript"),
+                            (o.async = !0),
+                            (o.crossorigin = "anonymous"),
+                            (o.src =
+                                "https://js.driftt.com/include/" +
+                                n +
+                                "/" +
+                                t +
+                                ".js");
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    });
+            }
+        })();
+        drift.SNIPPET_VERSION = "0.3.1";
+        drift.load("b6fxhaaiytif");
+    </script>
+    <!-- End of Async Drift Code -->
+
+    <!-- Calendly link widget begin -->
+    <script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        type="text/javascript"
+        async></script>
+
+    <!-- Calendly link widget end -->
 </html>
 <style is:global></style>
