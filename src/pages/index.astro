@@ -17,7 +17,7 @@ import type {
     ChatMessageType,
     ChatSessionType,
 } from "../components/chats/types";
-import { chatProjects } from "../data/projects";
+import { chatProjects } from "../data/projects.astro";
 
 const waaklabsAuthor: ChatAuthorType = {
     image: WLProfileImage,
@@ -86,16 +86,14 @@ const chatSessions: ChatSessionType[] = [
                         "MVP",
                         "E-commerce",
                         "CRM",
-                        "Business Dashboards",
+                        "Business Tooling/Automations",
                         "ERP Apps",
                         "Mobile Apps (iOS & Android)",
-                        "And if required, No-Code apps",
+                        "No-Code apps",
                         "You name it, We do it!",
                         "We also embrace AI revolution, We can build AI apps as well, Be it from a custom chatbot powered by ChatGPT to Image generators!",
-                        "We have been doing this for 7 Years, Completed over 50+ projects. So there's a lot of experience that we bring to the table to help you succeed!",
-                        'In short, You can call this as a "CTO as a Service"',
                         "Oh Also, We build Apps & tools for ourselves.",
-                        "Here's one, Tempbox: Create instant disposable emails for Various usecases.",
+                        "Here's one of many, Tempbox: Create instant disposable emails for Various usecases.",
                     ]),
                     {
                         type: "link",
@@ -104,15 +102,18 @@ const chatSessions: ChatSessionType[] = [
                             href: "https://tempbox.waseem.works/",
                         },
                     },
+                    ...generateTextMessages([
+                        "We have been doing this for 7 Years, Completed over 50+ projects. So there's a lot of experience that we bring to the table to help you succeed!",
+                        'In short, You can call this as a "CTO as a Service"',
+                    ]),
                 ],
             },
             {
                 author: youAuthor,
                 messages: generateTextMessages([
                     "😮 Thats Impressive!",
-                    "See, my friend recommended because you guys communicated better and helped my friend all the way and acted like a stakeholder.",
-                    "I'm proficient in my domain, but I definitely need help navigating the software space",
-                    "So, Having a CTO with us can do wonders!",
+                    "You were recommended because you communicated better and helped my friend all the way and acted like a stakeholder.",
+                    "So, Having a Techincal Partner with us can do wonders!",
                 ]),
             },
             {
@@ -132,6 +133,7 @@ const chatSessions: ChatSessionType[] = [
                 messages: [
                     ...generateTextMessages([
                         "Sure! We have worked on a lot of projects but I don't want to bore you with a long list, So here are some of our Top Projects:",
+                        "Instead of blowing our own trumpets, Let's hear from our clients themselves.",
                         "First, Brickell.com - Miami's Largest & Best Real Estate Website.",
                     ]),
                     {
@@ -143,11 +145,11 @@ const chatSessions: ChatSessionType[] = [
                         },
                     },
                     ...generateTextMessages([
-                        "Andres Larin, Founder - Brickell.com had a old website built with wordpress which was slow & bloated.",
-                        "He was tired of it because he couldn't improve SEO and the design was bad.",
-                        "We built the whole website from scratch using latest technologies",
-                        "Our North Star for this project was to improve SEO to bring in leads for his business and we were successful in doing that!",
-                        "Actually, Let's hear from Andres itself!",
+                        // "Andres Larin, Founder - Brickell.com had a old website built with wordpress which was slow & bloated.",
+                        // "He was tired of it because he couldn't improve SEO and the design was bad.",
+                        // "We built the whole website from scratch using latest technologies",
+                        // "Our North Star for this project was to improve SEO to bring in leads for his business and we were successful in doing that!",
+                        "Let's hear from Andres itself!",
                     ]),
                 ],
             },
@@ -155,7 +157,7 @@ const chatSessions: ChatSessionType[] = [
                 author: andresAuthor,
                 messages: generateTextMessages([
                     "Hey, Sure!",
-                    "I had an Old & badly designed website",
+                    "I had a website that was bad at design & hard to optimize SEO",
                     "I was also tired of working with my past developers who don't build things they promised, and were bad at communicating! 🤦‍♂️",
                     "Working with Waseem was a breath of fresh air. I couldn't be more happy! He built a fantastic website.",
                     "Because of the beautiful modern design, I found people are engaging more now.",
@@ -180,7 +182,7 @@ const chatSessions: ChatSessionType[] = [
                     },
                     ...generateTextMessages([
                         // "Contento uses GPT to help real estate agents create content for their blogs, listing descriptions, etc.",
-                        "Imagine an \"AirBnB for Virtual Offices\", based right in Singapore. That's what we cooked up, and it's been a game-changer in the world of flexible workspaces.",
+                        "Imagine an \"AirBnB for Virtual Offices\", based right in Singapore. Allospaces brings together hundreds of co-working brands, cafes and hotels to give you one single access pass with unlimited options across Asia. That's what we cooked up, and it's been a game-changer in the world of flexible workspaces.",
                         "Let's hear it from Pranav - Co-Founder of Allospaces",
                     ]),
                 ],
@@ -332,5 +334,3 @@ const chatSessions: ChatSessionType[] = [
         {chatSessions.map((chatSection) => <Chat value={chatSection} />)}
     </main>
 </Layout>
-
-<script></script>

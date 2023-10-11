@@ -21,6 +21,8 @@ interface ChatBubbleProjectType {
     name: string;
     description: string;
     link?: string;
+    tags?: string[];
+    images?: ImageMetadata[];
 }
 interface ChatBubbleSocialType {
     icon: ImageMetadata;

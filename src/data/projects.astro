@@ -1,0 +1,102 @@
+---
+import type { ChatMessageType } from "../components/chats/types";
+import ContentoImage from "../assets/images/projects/contento/contento_large.jpg";
+import type { Code } from "astro:components";
+
+export const chatProjects: ChatMessageType[] = [
+    {
+        type: "project",
+        project: {
+            name: "Contento AI",
+            // tags: ["GPT 3", "Stripe", "Webflow", "Rewardful", "Bubble.io"],
+            // tags: ["Landing Page", "UI/UX Design", "Stripe", "GPT 3"],
+            description:
+                "The Ultimate Tool for Crafting Blog Titles, Topics, SEO Boosts, and Property Listings Tailored for Real Estate Agents, All with the Power of GPT-3!",
+            images: [ContentoImage],
+        },
+    },
+    {
+        type: "project",
+        project: {
+            name: "WeBridge",
+            link: "https://app.webridge.app",
+            description:
+                "We've made hiring a breeze with this Video Resume Platform. It lets job-seekers submit video resumes, which makes life easier for recruiters to spot the right fit quickly.",
+            images: [
+                ...(await Astro.glob(
+                    "../assets/images/projects/bridge/*.png",
+                ).then((files) => files.map((file) => file.default))),
+            ],
+        },
+    },
+    {
+        type: "project",
+        project: {
+            name: "JobSkills.in",
+            link: "https://jobskills.in",
+            description:
+                "The All-in-One Platform with Admin Control, Attendance Tracking, Submission for Approvals, and More, for Students, Training Centers, Instructors, and Supervisors at Mahatma Phule Backward Class Development Corporation.",
+            images: [
+                ...(await Astro.glob(
+                    "../assets/images/projects/jobskills/*.png",
+                ).then((files) => files.map((file) => file.default))),
+            ],
+        },
+    },
+    {
+        type: "project",
+        project: {
+            name: "Adwiser",
+            link: "https://play.google.com/store/apps/dev?id=8605224589897540072&pli=1",
+            description:
+                "Service & Support from Professional Insurance Agents. One stop complaint & claim support, need gap analysis, information support from trustworthy insurance agencies nearby. Welcome to financial peace of mind!",
+            images: [
+                ...(await Astro.glob(
+                    "../assets/images/projects/adwiser/*",
+                ).then((files) => files.map((file) => file.default))),
+            ],
+        },
+    },
+    {
+        type: "project",
+        project: {
+            name: "WAAK Labs v1 - Marketing Page",
+            description:
+                "We take pride in crafting captivating landing/marketing pages for our website, adorned with stunning animations that engage and captivate our audience.",
+            images: [
+                ...(await Astro.glob(
+                    "../assets/images/projects/waaklabs-v1/*",
+                ).then((files) => files.map((file) => file.default))),
+            ],
+        },
+    },
+    {
+        type: "project",
+        project: {
+            name: "Laagom.com Marketing Page",
+            link: "https://laagom.com",
+            description:
+                "We've built amazing landing/marketing page for our partner: Laagom, A Creative Agency & Startup Studio that provides Digital Products and Services turns to focus on client success.",
+            images: [
+                ...(await Astro.glob("../assets/images/projects/laagom/*").then(
+                    (files) => files.map((file) => file.default),
+                )),
+            ],
+        },
+    },
+    {
+        type: "project",
+        project: {
+            name: "Zeesh",
+            link: "https://zeesh.co.in",
+            description:
+                "We've developed an e-commerce app on Webflow for Zeesh, a high-end leather footwear and accessories brand known for its meticulous craftsmanship, ensuring both luxury and comfort in every product.",
+            images: [
+                ...(await Astro.glob("../assets/images/projects/zeesh/*").then(
+                    (files) => files.map((file) => file.default),
+                )),
+            ],
+        },
+    },
+];
+---

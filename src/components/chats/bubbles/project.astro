@@ -1,8 +1,9 @@
 ---
 import type { ChatBubbleProjectType } from "../types";
+import { Image } from "astro:assets";
 
 interface Props extends ChatBubbleProjectType {}
-const { name, description, link }: Props = Astro.props;
+const { name, description, link, tags, images }: Props = Astro.props;
 ---
 
 <div
@@ -25,7 +26,9 @@ const { name, description, link }: Props = Astro.props;
         @click="toggle()"
         @project:open.window="closeIfOtherAccordionOpen($event.detail.project)"
         class="flex cursor-pointer flex-row items-center justify-between px-4 py-2">
-        <div>{name}</div>
+        <div>
+            {name}
+        </div>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             class="transition duration-300"
@@ -43,20 +46,72 @@ const { name, description, link }: Props = Astro.props;
         </svg>
     </div>
     <div x-show="open" x-collapse>
-        <div class="px-4 py-4">
-            <div>
-                {description}
-            </div>
-
+        <div class="flex flex-col gap-4 px-4 pb-4 pt-4">
+            {
+                tags && (
+                    <div class="flex flex-row flex-wrap gap-1 text-xs">
+                        {tags.map((tag) => (
+                            <div class="rounded-full bg-gray-100 px-2 py-0.5">
+                                {tag}
+                            </div>
+                        ))}
+                    </div>
+                )
+            }
             {
                 link && (
-                    <div class="mt-4">
-                        <span>Link: </span>
-                        <a href={link} class="text-indigo-600">
+                    <div>
+                        <a href={link} target="_blank" class="text-indigo-600">
                             {link}
                         </a>
                     </div>
                 )
+            }
+            <p>
+                {description}
+            </p>
+            <div>
+                {
+                    images &&
+                        images.slice(0, 1)?.map((image) => (
+                            <a data-fslightbox={name} href={image.src}>
+                                <Image
+                                    src={image}
+                                    alt={`Image of ${name}`}
+                                    width="800"
+                                    height="400"
+                                    class="mx-auto rounded-2xl object-cover"
+                                />
+                            </a>
+                        ))
+                }
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                {
+                    images &&
+                        images.slice(1, 7).map((image) => (
+                            <a data-fslightbox={name} href={image.src}>
+                                <Image
+                                    src={image}
+                                    alt={`Image of ${name}`}
+                                    width="400"
+                                    height="200"
+                                    class="mx-auto rounded-2xl object-cover"
+                                />
+                            </a>
+                        ))
+                }
+            </div>
+            {
+                images &&
+                    images.slice(4, images.length).map((image) => (
+                        <a
+                            data-fslightbox={name}
+                            href={image.src}
+                            class="hidden">
+                            Image of {name}
+                        </a>
+                    ))
             }
         </div>
     </div>
