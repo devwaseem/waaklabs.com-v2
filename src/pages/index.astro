@@ -19,6 +19,8 @@ import type {
 } from "../components/chats/types";
 import { chatProjects } from "../data/projects.astro";
 
+const currentYear = new Date().getFullYear()
+
 const waaklabsAuthor: ChatAuthorType = {
     image: WLProfileImage,
     name: "Waseem / Founder, WAAK Labs",
@@ -330,7 +332,12 @@ const chatSessions: ChatSessionType[] = [
 ---
 
 <Layout title="WAAK Labs">
-    <main class="mx-auto mt-12 flex max-w-xl flex-col gap-8">
+    <main class="mx-auto my-12 flex max-w-xl flex-col gap-8">
         {chatSessions.map((chatSection) => <Chat value={chatSection} />)}
     </main>
+    <footer>
+        <div class="max-w-xl mx-auto border-1 border-t border-gray-200 py-2 text-sm text-gray-500">
+            ©&nbsp;<span>{currentYear}</span> WAAK Labs — World Class Web & Mobile App Development Services
+        </div>
+    </footer>
 </Layout>
